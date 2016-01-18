@@ -1,6 +1,9 @@
+baseFinal <- NULL
+
 shinyUI(
-    fluidPage(
-        
+    fluidPage(  tags$head(
+        tags$style(HTML('#run{background-color:orange}'))
+    ),
         fluidRow(
             
         
@@ -20,7 +23,7 @@ shinyUI(
         ),
         fluidRow(
            
-            column(3,p("") ),
+            column(4,p("") ),
             column(3,    
                   div(fileInput("dataBase",label = div(""),
                                 accept = c('text/csv','text/comma-separated-values',                  
@@ -29,9 +32,25 @@ shinyUI(
                                            '.csv',
                                            '.tsv'),width='130%'))
             ),
-            column(4,p(""))
-        )  
-               
+            column(3,p(""))
+        ),  
+        
+        fluidRow(
+            column(12,
+                tableOutput("baseDatos"),
+            h3(strong('Exploratory data analysis'),align = "center" ),
+            br(),
+            br()
+            )        
+        ),
+        #sidebarPanel(
+            
+        fluidRow(
+            column(6,div(uiOutput("namsx"),align = "center")),
+            column(6,div(uiOutput("namsy"),align = "center"))
+         #   ) 
+        )
+    
     )
 )
 
