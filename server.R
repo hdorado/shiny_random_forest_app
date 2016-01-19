@@ -1,6 +1,6 @@
-
+source("FunAppRF.R")
 library(ggplot2)
-source(FunAppRF.R)
+library(randomForest)
 
 baseDatos <- NULL
 
@@ -43,10 +43,29 @@ shinyServer(function(input,output) {
         baseDatos()[1:5,][,1:5]
     })
     
+    
+    selectVars <- reactive({if (is.null(baseDatos())){c(1,2)}
+                           else{c(input$xvar,input$yvar)}})
+    
+    
     output$plotDescrip <- renderPlot(
-        if(is.null(baseDatos))
+        if(is.null(baseDatos()))
             return(NULL)
-        else(ggdescriptive(baseDatos(),input$formatoFecha,input$xvar,input$yvar))
+        else{
+            
+            if(length(selectVars())!=2){ 
+                    NULL}else{
+            ggdescriptive(baseDatos(),selectVars()[1],selectVars()[2])
+                    }
+        }
+    )
+    
+    output$plotRelevance <- renderPlot(
+        if(is.null(baseDatos()))
+            return(NULL)
+        else{
+            importRelevance(baseDatos())
+        }
     )
     
 })

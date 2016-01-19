@@ -37,7 +37,7 @@ shinyUI(
         
         fluidRow(
             column(12,
-                tableOutput("baseDatos"),
+                div(tableOutput("baseDatos"),align="center"),
             h3(strong('Exploratory data analysis'),align = "center" ),
             br(),
             br()
@@ -49,8 +49,15 @@ shinyUI(
             column(6,div(uiOutput("namsx"),align = "center")),
             column(6,div(uiOutput("namsy"),align = "center"))
          #   ) 
+        ),
+        
+        fluidRow(
+            column(12,
+                plotOutput("plotDescrip"),
+                h3(strong("Importance relevance\nRandom Forest"),align="center"),
+                plotOutput("plotRelevance")
+            )
         )
-    
     )
 )
 
