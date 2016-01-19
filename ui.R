@@ -13,11 +13,10 @@ shinyUI(
                                  for multivariate data:")),
                br(),
                
-               p("This aplication is for exploring random forest models with a 
-                 quantitative target; once the user has loaded a tidy database, 
-                 immediately can start to: explore the correlation between two 
-                 variables, identify the subset of relevants factor and reconoze 
-                 the dependences between input and output."),
+               p("This application is for exploring data sets using random forest models. 
+                 Once the user has loaded a tidy database, 
+                 immediately can start to explore the correlation between two 
+                 variables and identify the subset of relevance factors."),
             br()     
           )
         ),
