@@ -20,7 +20,7 @@ shinyServer(function(input,output) {
                              "No se han cargado datos de clima en formato csv"))
             }   
             
-            read.csv(dataBase$datapath)} 
+            read.csv(dataBase$datapath,stringsAsFactors = T)} 
         
         
         return(baseFinal)
